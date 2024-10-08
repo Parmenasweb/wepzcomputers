@@ -1,7 +1,6 @@
 "use client";
 
 import BlogCard from "./components/BlogCard";
-import BlogEditor from "./components/BlogEditor";
 
 const blogs = [
   {
