@@ -40,7 +40,7 @@ export default function ContactPage() {
             <div className="relative bg-white dark:bg-gray-800 p-2 rounded-2xl shadow-2xl">
               <Image
                 src="/images/wepz-3d.webp"
-                alt="Laptop Repair"
+                alt="Laptop-sRepair"
                 width={600}
                 height={400}
                 className="rounded-xl w-full"
