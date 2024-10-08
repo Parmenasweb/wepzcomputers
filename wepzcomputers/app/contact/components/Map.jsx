@@ -15,16 +15,7 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 // });
 
 const Map = () => {
-  const [isMounted, setIsMounted] = useState(false);
   const position = [26.186196, 91.74588]; // Latitude and Longitude for WEPZ Computers, Guwahati
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  if (!isMounted) {
-    return null;
-  }
 
   return (
     <div className="w-[90%] mx-auto h-96">

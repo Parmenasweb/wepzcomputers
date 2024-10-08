@@ -6,11 +6,12 @@ import { MessageCircle } from "lucide-react";
 import ContactForm from "./components/ContactForm";
 import BusinessHours from "./components/BusinessHours";
 import Map from "./components/Map";
+import { redirect } from "next/navigation";
 
 export default function ContactPage() {
   const handleWhatsAppClick = () => {
     // Replace with your actual WhatsApp number
-    window.open("https://wa.me/919864066666", "_blank");
+    redirect("https://wa.me/919864066666");
   };
 
   return (
