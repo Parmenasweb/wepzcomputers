@@ -1,5 +1,6 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
+import Image from "next/image";
 
 // Sample data for the brand logos
 const brands = [
@@ -53,22 +54,41 @@ const brands = [
 
 const BrandsWeWorkWith = () => {
   const containerRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
 
-  useEffect(() => {
-    const container = containerRef.current;
-    const scrollDistance = container.scrollWidth / brands.length; // Scroll to move one full set of brands
-
-    const animateScroll = () => {
+  const animateScroll = useCallback(() => {
+    if (containerRef.current) {
+      const container = containerRef.current;
+      const scrollDistance = container.scrollWidth / brands.length;
       container.scrollLeft += scrollDistance;
       if (container.scrollLeft >= scrollDistance) {
-        container.scrollLeft = 0; // Reset scroll
+        container.scrollLeft = 0;
       }
-    };
-
-    const interval = setInterval(animateScroll, 3000); // Change logos every 3 seconds
-
-    return () => clearInterval(interval); // Cleanup on unmount
+    }
   }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      { threshold: 0.1 }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    let interval;
+    if (isVisible) {
+      interval = setInterval(animateScroll, 3000);
+    }
+    return () => clearInterval(interval);
+  }, [isVisible, animateScroll]);
 
   return (
     <section className="py-12 bg-gray-50">
@@ -80,21 +100,13 @@ const BrandsWeWorkWith = () => {
           style={{ scrollBehavior: "smooth" }}
         >
           <div className="flex">
-            {brands.map((brand) => (
-              <div key={brand.id} className="m-4 flex-none w-32">
-                <img
+            {[...brands, ...brands].map((brand, index) => (
+              <div key={`${brand.id}-${index}`} className="m-4 flex-none w-32">
+                <Image
                   src={brand.logoUrl}
                   alt={brand.name}
-                  className="w-full h-auto object-contain transition-transform duration-300 transform hover:scale-105"
-                />
-              </div>
-            ))}
-            {/* Duplicate the logos for continuous effect */}
-            {brands.map((brand) => (
-              <div key={`duplicate-${brand.id}`} className="m-4 flex-none w-32">
-                <img
-                  src={brand.logoUrl}
-                  alt={brand.name}
+                  width={100}
+                  height={100}
                   className="w-full h-auto object-contain transition-transform duration-300 transform hover:scale-105"
                 />
               </div>

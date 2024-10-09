@@ -1,5 +1,6 @@
 import localFont from "next/font/local";
 import "./globals.css";
+import "leaflet/dist/leaflet.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import Footer from "@/components/homepageComps/footer";
 import Navbar from "@/components/homepageComps/Navbar";

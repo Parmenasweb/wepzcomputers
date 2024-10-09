@@ -1,42 +1,45 @@
 "use client";
 
 import { useState, useEffect } from "react";
-// import dynamic from "next/dynamic";
-import "leaflet/dist/leaflet";
-
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-
-// Set up the marker icon (optional)
-// const markerIcon = L.icon({
-//   iconUrl: "https://cdn-icons-png.flaticon.com/512/484/484167.png", // You can replace this with your preferred marker image
-//   iconSize: [35, 45], // size of the icon
-//   iconAnchor: [17, 46], // point of the icon which will correspond to marker's location
-//   popupAnchor: [0, -46], // point from which the popup should open relative to the iconAnchor
-// });
+import dynamic from "next/dynamic";
 
 const Map = () => {
-  const position = [26.186196, 91.74588]; // Latitude and Longitude for WEPZ Computers, Guwahati
+  const [MapComponent, setMapComponent] = useState(null);
 
-  return (
-    <div className="w-[90%] mx-auto h-96">
-      <MapContainer
-        center={position}
-        zoom={13}
-        scrollWheelZoom={false}
-        className="h-full w-full"
-      >
-        <TileLayer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        />
-        <Marker position={position}>
-          <Popup>
-            WEPZ Computers <br /> Donar Planet, Guwahati.
-          </Popup>
-        </Marker>
-      </MapContainer>
-    </div>
-  );
+  useEffect(() => {
+    const loadMap = async () => {
+      const { MapContainer, TileLayer, Marker, Popup } = await import(
+        "react-leaflet"
+      );
+      const L = await import("leaflet");
+
+      setMapComponent(() => {
+        return ({ position }) => (
+          <MapContainer
+            center={position}
+            zoom={13}
+            style={{ height: "400px", width: "100%" }}
+          >
+            <TileLayer
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            />
+            <Marker position={position}>
+              <Popup>
+                Wepz Computers <br /> Guwahati, Assam
+              </Popup>
+            </Marker>
+          </MapContainer>
+        );
+      });
+    };
+
+    loadMap();
+  }, []);
+
+  if (!MapComponent) return <div>Loading map...</div>;
+
+  return <MapComponent position={[26.1445, 91.7362]} />;
 };
 
-export default Map;
+export default dynamic(() => Promise.resolve(Map), { ssr: false });

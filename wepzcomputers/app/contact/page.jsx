@@ -5,15 +5,28 @@ import Image from "next/image";
 import { MessageCircle } from "lucide-react";
 import ContactForm from "./components/ContactForm";
 import BusinessHours from "./components/BusinessHours";
-import Map from "./components/Map";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
+
+import dynamic from "next/dynamic";
+
+const Map = dynamic(() => import("./components/Map"), {
+  ssr: false,
+  loading: () => <p>Loading map...</p>,
+});
+
+// ... rest of your imports and component code
 
 export default function ContactPage() {
-  const handleWhatsAppClick = () => {
-    // Replace with your actual WhatsApp number
-    redirect("https://wa.me/919864066666");
-  };
+  const router = useRouter();
 
+  const handleWhatsAppClick = () => {
+    const phoneNumber = "6003145149"; // Replace with your actual WhatsApp number
+    const message = encodeURIComponent(
+      "Hello, I have a question about laptop repair."
+    );
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
+    window.open(whatsappUrl, "_blank");
+  };
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
       {/* Modern Hero Section */}
