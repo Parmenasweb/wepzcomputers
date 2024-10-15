@@ -1,241 +1,177 @@
 "use client";
 
-import BlogCard from "./components/BlogCard";
+import { useState } from "react";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Calendar, User } from "lucide-react";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
 
-const blogs = [
+// Placeholder data for blog posts
+const blogPosts = [
   {
     id: 1,
-    title: "How to upgrade your PC",
-    imageUrl: "/images/pc-upgrade.webp",
-    description:
-      "Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta.",
-    date: "Mar 16, 2024",
-    datetime: "2024-03-16",
-    category: "Tech",
-    author: {
-      name: "Wepz Computers",
-      imageUrl:
-        "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
+    title: "10 Tips to Extend Your Laptop's Battery Life",
+    excerpt:
+      "Learn how to maximize your laptop's battery performance with these simple tricks.",
+    date: "2023-10-15",
+    author: "John Doe",
+    category: "Tips & Tricks",
+    image: "/placeholder.svg?height=200&width=300",
   },
   {
     id: 2,
-    title: "Boost your conversion rate",
-    imageUrl: "/images/pc-upgrade.webp",
-    description:
-      "Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta.",
-    date: "Mar 16, 2020",
-    datetime: "2020-03-16",
-    category: "Marketing",
-    author: {
-      name: "Wepz Computers",
-      imageUrl:
-        "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
+    title: "Common Causes of Laptop Overheating",
+    excerpt:
+      "Discover why your laptop might be running hot and how to cool it down.",
+    date: "2023-10-10",
+    author: "Jane Smith",
+    category: "Troubleshooting",
+    image: "/placeholder.svg?height=200&width=300",
   },
   {
     id: 3,
-    title: "Boost your conversion rate",
-    imageUrl: "/images/pc-upgrade.webp",
-    description:
-      "Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta.",
-    date: "Mar 16, 2020",
-    datetime: "2020-03-16",
-    category: "Marketing",
-    author: {
-      name: "Wepz Computers",
-      imageUrl:
-        "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
+    title: "The Future of Laptop Technology: What to Expect",
+    excerpt:
+      "Explore upcoming trends and innovations in laptop design and functionality.",
+    date: "2023-10-05",
+    author: "Bob Johnson",
+    category: "Industry News",
+    image: "/placeholder.svg?height=200&width=300",
   },
-  // More posts...
+  {
+    id: 4,
+    title: "How to Choose the Right Laptop for Your Needs",
+    excerpt:
+      "A comprehensive guide to selecting the perfect laptop based on your requirements.",
+    date: "2023-09-30",
+    author: "Alice Brown",
+    category: "Buying Guide",
+    image: "/placeholder.svg?height=200&width=300",
+  },
+  {
+    id: 5,
+    title: "DIY Laptop Upgrades: RAM and SSD",
+    excerpt:
+      "Step-by-step instructions for upgrading your laptop's memory and storage.",
+    date: "2023-09-25",
+    author: "Charlie Wilson",
+    category: "DIY Repairs",
+    image: "/placeholder.svg?height=200&width=300",
+  },
 ];
 
-// export default function Example() {
-//   return (
-//     <div className="bg-white py-24 sm:py-32">
-//       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-//         <div className="mx-auto max-w-2xl lg:mx-0">
-//           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-//             From the blog
-//           </h2>
-//           <p className="mt-2 text-lg leading-8 text-gray-600">
-//             Learn how to grow your business with our expert advice.
-//           </p>
-//         </div>
-//         <div className="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-//           {posts.map((post) => (
-//             <BlogCard key={post.id} post={post} />
-//           ))}
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
+const categories = ["All", ...new Set(blogPosts.map((post) => post.category))];
 
-import { useEffect, useState } from "react";
+export default function BlogPage() {
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const router = useRouter();
 
-const BlogsPage = () => {
-  // const [blogs, setBlogs] = useState([]);
-  const [isAdmin, setIsAdmin] = useState(false);
-  const [formData, setFormData] = useState({
-    title: "",
-    content: [{ type: "paragraph", children: [{ text: "" }] }], // Initialize content for Slate
-    author: "",
-    category: "",
-  });
-  const [filter, setFilter] = useState("");
-  const [sort, setSort] = useState("latest");
+  const filteredPosts =
+    selectedCategory === "All"
+      ? blogPosts
+      : blogPosts.filter((post) => post.category === selectedCategory);
 
-  // useEffect(() => {
-  //   const fetchBlogs = async () => {
-  //     const res = await fetch(`/api/get-blogs?category=${filter}&sort=${sort}`);
-  //     const data = await res.json();
-  //     setBlogs(data.blogs);
-  //   };
-
-  //   fetchBlogs();
-  // }, [filter, sort]); // Re-fetch when filter or sort changes
-
-  const authenticateAdmin = () => {
-    const password = prompt("Enter Admin Password:");
-    if (password === process.env.NEXT_PUBLIC_ADMIN_PASSWORD) {
-      setIsAdmin(true);
-    } else {
-      alert("Unauthorized Access!");
-    }
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const res = await fetch("/api/submit-blog", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
-    });
-    if (res.ok) {
-      alert("Blog submitted successfully!");
-      setFormData({ title: "", content: "", author: "", category: "" });
-      fetchBlogs(); // Re-fetch blogs to include new one
-    } else {
-      alert("Error submitting blog.");
-    }
-  };
-
-  const handleChange = (e) => {
-    if (e.target) {
-      // For regular input fields
-      setFormData({ ...formData, [e.target.name]: e.target.value });
-    } else {
-      // For Slate editor
-      setFormData({ ...formData, content: e });
-    }
-  };
-
-  const handleFilterChange = (e) => {
-    setFilter(e.target.value);
-  };
-
-  const handleSortChange = (e) => {
-    setSort(e.target.value);
+  const handlePostClick = (postId) => {
+    router.push(`/blog/${postId}`);
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-8">
-      <div className="mx-auto max-w-2xl lg:mx-0">
-        <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-          From the blog
-        </h2>
-        <p className="mt-2 text-lg leading-8 text-gray-600">
-          Learn how to grow your business with our expert advice.
+    <div className="container mx-auto px-4 py-8">
+      <h1 className="text-4xl font-bold mb-8 text-center">
+        Laptop Repair Blog
+      </h1>
+
+      <div className="flex flex-wrap justify-center gap-2 mb-8">
+        {categories.map((category) => (
+          <Button
+            key={category}
+            variant={selectedCategory === category ? "default" : "outline"}
+            onClick={() => setSelectedCategory(category)}
+            className="mb-2"
+          >
+            {category}
+          </Button>
+        ))}
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {filteredPosts.map((post) => (
+          <Card
+            key={post.id}
+            className="flex flex-col cursor-pointer transition-transform duration-200 hover:scale-105"
+            onClick={() => handlePostClick(post.id)}
+          >
+            <div className="relative w-full pt-[56.25%]">
+              <Image
+                src={post.image}
+                alt={post.title}
+                fill
+                className="object-cover rounded-t-lg"
+              />
+            </div>
+            <CardHeader>
+              <CardTitle className="line-clamp-2">{post.title}</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-muted-foreground line-clamp-3">
+                {post.excerpt}
+              </p>
+            </CardContent>
+            <CardFooter className="flex justify-between mt-auto">
+              <div className="flex items-center text-sm text-muted-foreground">
+                <Calendar className="mr-1 h-4 w-4" />
+                {post.date}
+              </div>
+              <div className="flex items-center text-sm text-muted-foreground">
+                <User className="mr-1 h-4 w-4" />
+                {post.author}
+              </div>
+            </CardFooter>
+            <CardFooter>
+              <Badge>{post.category}</Badge>
+            </CardFooter>
+          </Card>
+        ))}
+      </div>
+
+      {filteredPosts.length === 0 && (
+        <p className="text-center mt-4 text-muted-foreground">
+          No blog posts found in this category.
         </p>
-      </div>
-
-      <div className="mb-4">
-        <select
-          onChange={handleFilterChange}
-          className="p-2 border border-gray-300 rounded"
-        >
-          <option value="">All Categories</option>
-          <option value="tech">Tech</option>
-          <option value="lifestyle">Lifestyle</option>
-          <option value="business">Business</option>
-          {/* Add more categories as needed */}
-        </select>
-        <select
-          onChange={handleSortChange}
-          className="p-2 border border-gray-300 rounded ml-2"
-        >
-          <option value="latest">Newest</option>
-          <option value="oldest">Oldest</option>
-        </select>
-      </div>
-
-      {blogs.length > 0 ? (
-        blogs.map((blog) => {
-          return <BlogCard key={blog.id} blog={blog} />;
-        })
-      ) : (
-        <p>No blogs available yet.</p>
-      )}
-
-      {!isAdmin && (
-        <button
-          onClick={authenticateAdmin}
-          className="p-2 mt-4 bg-blue-600 text-white rounded"
-        >
-          Admin Login
-        </button>
-      )}
-
-      {isAdmin && (
-        <div>
-          <h2 className="text-xl font-bold mb-4">Submit a New Blog Post</h2>
-          <form onSubmit={handleSubmit} className="mb-8">
-            <input
-              type="text"
-              name="title"
-              value={formData.title}
-              onChange={handleChange}
-              placeholder="Blog Title"
-              className="mb-4 p-2 w-full border border-gray-300 rounded"
-              required
-            />
-            <BlogEditor
-              initialValue={formData.content}
-              onChange={(newContent) =>
-                setFormData((prev) => ({ ...prev, content: newContent }))
-              }
-            />
-            <input
-              type="text"
-              name="author"
-              value={formData.author}
-              onChange={handleChange}
-              placeholder="Author Name"
-              className="mb-4 p-2 w-full border border-gray-300 rounded"
-              required
-            />
-            <input
-              type="text"
-              name="category"
-              value={formData.category}
-              onChange={handleChange}
-              placeholder="Category"
-              className="mb-4 p-2 w-full border border-gray-300 rounded"
-              required
-            />
-            <button
-              type="submit"
-              className="p-2 bg-green-600 text-white rounded"
-            >
-              Submit Blog
-            </button>
-          </form>
-        </div>
       )}
     </div>
   );
-};
+}
 
-export default BlogsPage;
+// "use client";
+
+// import Link from "next/link";
+// import { getAllPosts } from "@/lib/contentLayer"; // Adjust the import based on your structure
+
+// export default function BlogPage() {
+//   const posts = getAllPosts(); // Fetch all posts
+
+//   return (
+//     <div className="container mx-auto px-4 py-8">
+//       <h1 className="text-4xl font-bold mb-4">Blog Posts</h1>
+//       <ul>
+//         {posts.map((post) => (
+//           <li key={post.slug} className="mb-4">
+//             <Link href={`/blog/${post.slug}`}>
+//               <a className="text-blue-600 hover:underline">{post.title}</a>
+//             </Link>
+//             <div className="text-muted-foreground">{post.date}</div>
+//           </li>
+//         ))}
+//       </ul>
+//     </div>
+//   );
+// }

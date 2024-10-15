@@ -8,6 +8,7 @@ import { NavigationMenuItems } from "@/components/navComponents/navMenu";
 
 import Link from "next/link";
 import { ToggleMode } from "@/components/toggleMode";
+import Image from "next/image";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -20,10 +21,13 @@ export default function Navbar() {
         <div className="flex lg:flex-1">
           <a href="#" className="-m-1.5 p-1.5">
             <span className="sr-only">Your Company</span>
-            <img
-              alt=""
-              src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600"
-              className="h-8 w-auto"
+            <Image
+              src="https://wepzcomputers.in/wp-content/uploads/2022/02/cropped-wepz-computers-Logo.png"
+              alt="WEPZ Computers Logo"
+              width={100}
+              height={70}
+              quality={100}
+              className="text-white font-bold flex items-start mb-2 "
             />
           </a>
         </div>
