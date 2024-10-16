@@ -43,7 +43,7 @@ const components = [
 export function NavigationMenuItems() {
   return (
     <NavigationMenu>
-      <NavigationMenuList className="flex flex-col md:flex-row justify-between">
+      <NavigationMenuList className="flex flex-col md:flex-row justify-between w-full">
         <NavigationMenuItem>
           <Link href="/" legacyBehavior passHref>
             <NavigationMenuLink
@@ -64,7 +64,7 @@ export function NavigationMenuItems() {
                   key={component.title}
                   title={component.title}
                   href={component.href}
-                  className="transition-all duration-300 ease-in-out hover:scale-105 hover:bg-blue-50 dark:hover:bg-blue-950"
+                  className="transition-all  duration-300 ease-in-out hover:scale-105 hover:bg-blue-100 dark:hover:bg-blue-950"
                 >
                   {component.description}
                 </ListItem>
@@ -100,7 +100,7 @@ const ListItem = React.forwardRef(
     return (
       <li>
         <NavigationMenuLink asChild>
-          <a
+          <Link
             ref={ref}
             className={cn(
               "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
@@ -112,7 +112,7 @@ const ListItem = React.forwardRef(
             <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
               {children}
             </p>
-          </a>
+          </Link>
         </NavigationMenuLink>
       </li>
     );

@@ -19,17 +19,17 @@ export default function Navbar() {
         className="flex items-center justify-between p-6 lg:px-8"
       >
         <div className="flex lg:flex-1">
-          <a href="#" className="-m-1.5 p-1.5">
-            <span className="sr-only">Your Company</span>
+          <Link href="/" className="-m-1.5 p-1.5">
+            <span className="sr-only">wepzcomputers logo</span>
             <Image
               src="https://wepzcomputers.in/wp-content/uploads/2022/02/cropped-wepz-computers-Logo.png"
               alt="WEPZ Computers Logo"
-              width={100}
-              height={70}
+              width={200}
+              height={150}
               quality={100}
-              className="text-white font-bold flex items-start mb-2 "
+              className=" font-bold flex items-start mb-2 "
             />
-          </a>
+          </Link>
         </div>
         {/* toggle menu button */}
         <div className="flex justify-between items-center lg:hidden">
@@ -78,14 +78,17 @@ export default function Navbar() {
         <div className="fixed inset-0 z-50" />
         <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white dark:bg-gray-900 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 dark:sm:ring-gray-100/10">
           <div className="flex items-center justify-between">
-            <a href="#" className="-m-1.5 p-1.5">
+            <Link href="/" className="-m-1.5 p-1.5">
               <span className="sr-only">Wepz Computers</span>
-              <img
-                alt=""
-                src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600"
-                className="h-8 w-auto"
+              <Image
+                src="https://wepzcomputers.in/wp-content/uploads/2022/02/cropped-wepz-computers-Logo.png"
+                alt="WEPZ Computers Logo"
+                width={150}
+                height={120}
+                quality={100}
+                className=" font-bold flex items-start mb-2 "
               />
-            </a>
+            </Link>
             <button
               type="button"
               onClick={() => setMobileMenuOpen(false)}

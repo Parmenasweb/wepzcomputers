@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, useState, useCallback } from "react";
+import React, { useEffect, useRef, useState, useCallback } from "react";
 import Image from "next/image";
 
 // Sample data for the brand logos
@@ -75,14 +75,14 @@ function InfiniteMovingCards({
   speed = "fast",
   pauseOnHover = true,
 }) {
-  const containerRef = React.useRef(null);
-  const scrollerRef = React.useRef(null);
+  const containerRef = useRef(null);
+  const scrollerRef = useRef(null);
 
-  React.useEffect(() => {
+  useEffect(() => {
     addAnimation();
   }, []);
 
-  const [start, setStart] = React.useState(false);
+  const [start, setStart] = useState(false);
 
   function addAnimation() {
     if (containerRef.current && scrollerRef.current) {
@@ -153,7 +153,7 @@ function InfiniteMovingCards({
               <Image
                 height={50}
                 width={50}
-                src={item.logo}
+                src={item.logoUrl}
                 alt={`${item.name} logo`}
                 className="h-20 w-20 object-contain"
               />

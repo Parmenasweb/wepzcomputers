@@ -35,7 +35,7 @@ export default function AboutPage() {
           </h1>
           <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
             Empowering users with expert computer repairs and custom builds.
-            We're dedicated to providing top-notch service and innovative
+            We&apos;re dedicated to providing top-notch service and innovative
             solutions for all your tech needs.
           </p>
         </motion.section>
@@ -181,8 +181,8 @@ export default function AboutPage() {
                 We pride ourselves on our technical expertise, customer-first
                 approach, and our commitment to staying ahead of the curve in
                 the ever-evolving world of technology. Whether you need a quick
-                repair or a fully customized PC build, we're here to exceed your
-                expectations.
+                repair or a fully customized PC build, we&apos;re here to exceed
+                your expectations.
               </p>
               <Button className="bg-gradient-to-r from-blue-500 to-teal-400 text-white">
                 Contact Us
@@ -237,7 +237,10 @@ export default function AboutPage() {
             </Button>
           </div>
           <div className="h-full">
-            <img
+            <Image
+              width={500}
+              height={500}
+              quality={100}
               src="/images/laptop-build.webp"
               alt="Join our team"
               className="w-full h-full object-cover"

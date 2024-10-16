@@ -15,6 +15,7 @@ import { services } from "@/lib/data";
 import BrandsWeWorkWith from "@/components/homepageComps/logoHeads";
 import WhyChooseUs from "@/components/homepageComps/why-us";
 import ServiceCard from "../components/ServiceCard";
+import Testimonials from "@/components/homepageComps/testimonials";
 // import FeaturedService from "../components/FeaturedService";
 
 export default function Services({ params }) {
@@ -67,65 +68,7 @@ export default function Services({ params }) {
       <WhyChooseUs />
 
       {/* Testimonials */}
-      <section className="bg-gray-100 dark:bg-gray-900 py-16">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12 dark:text-white">
-            What some of our customers say
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                name: "John Doe",
-                role: "Software Developer",
-                content:
-                  "They fixed my laptop in record time. Excellent service!",
-              },
-              {
-                name: "Jane Smith",
-                role: "Graphic Designer",
-                content:
-                  "The team went above and beyond to recover my lost files. Highly recommended!",
-              },
-              {
-                name: "Mike Johnson",
-                role: "Student",
-                content:
-                  "Affordable and professional. They saved me from a potential disaster before my finals.",
-              },
-            ].map((testimonial, index) => (
-              <div
-                key={index}
-                className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg"
-              >
-                <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-blue-600 dark:bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-xl mr-4">
-                    {testimonial.name[0]}
-                  </div>
-                  <div>
-                    <h3 className="font-semibold dark:text-white">
-                      {testimonial.name}
-                    </h3>
-                    <p className="text-gray-600 dark:text-gray-300 text-sm">
-                      {testimonial.role}
-                    </p>
-                  </div>
-                </div>
-                <p className="text-gray-700 dark:text-gray-300">
-                  {testimonial.content}
-                </p>
-                <div className="flex mt-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className="w-5 h-5 text-yellow-400 fill-current"
-                    />
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <Testimonials />
 
       {/* Call to Action */}
       <section className="bg-blue-600 dark:bg-blue-800 text-white py-16">

@@ -1,10 +1,14 @@
 "use client";
 
+import Image from "next/image";
+
 export default function BlogCard(blog) {
   return (
     <article className="flex max-w-xl flex-col items-start justify-between">
       <a href={`/blog/${blog.id}`}>
-        <img
+        <Image
+          height={500}
+          width={500}
           src={blog.imageUrl} // Assuming post.imageUrl contains the URL of the image
           alt={blog.title}
           className="w-full h-48 object-cover rounded-lg mb-4"
@@ -27,7 +31,9 @@ export default function BlogCard(blog) {
         </div>
       </a>
       <div className="relative mt-8 flex items-center gap-x-4">
-        <img
+        <Image
+          height={500}
+          width={500}
           alt=""
           src="/images/pc-upgrade.webp"
           className="h-10 w-10 rounded-full bg-gray-50"

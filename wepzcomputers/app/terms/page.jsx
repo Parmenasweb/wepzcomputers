@@ -19,7 +19,7 @@ export default function TermsAndCondition() {
         <link rel="canonical" href="https://www.wepzcomputers.com/terms" />
       </Head>
       <div className="min-h-screen bg-background py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl mx-auto">
+        <div className="w-[90%] mx-auto">
           <h1 className="text-4xl font-bold text-center mb-8">
             Terms and Conditions
           </h1>
@@ -35,11 +35,11 @@ export default function TermsAndCondition() {
                 <p>
                   We provide computer and laptop repair doorstep and Onsite
                   service no repair done no charge ( no fix no fee) no visiting
-                  charge no diagnose charge, Warranty on all equipment’s or
+                  charge no diagnose charge, Warranty on all equipments or
                   spares will be as per manufacturer norms & conditions and
                   shall be directly provided by manufacturers only, Material
                   should be collected within 60 days of irrespective of whether
-                  it’s repaired or not, after 60 days we are not responsible for
+                  its repaired or not, after 60 days we are not responsible for
                   your material, The process of addition/removal of software or
                   hardware may sometimes result to the dead device, loss or
                   Corruption of data, WEPZ COMPUTERS will not be held liable for
@@ -52,7 +52,7 @@ export default function TermsAndCondition() {
                   condition that the repairs may be delayed if the required
                   space is not available with us or in the market These terms
                   govern the provision of any computer support services
-                  (“Services”) provided by WepZ Computers WepZ Computers provide
+                  (Services) provided by WepZ Computers WepZ Computers provide
                   you with access to use the Services subject to your compliance
                   with the following terms. WepZ Computers reserve the right to
                   refuse to provide the Services to anyone at any time without
@@ -122,7 +122,7 @@ export default function TermsAndCondition() {
                 <p>
                   WepZ Computers agrees not to disclose any and all information
                   or data files supplied with, stored on, or recovered from
-                  client’s equipment except to employees or agents of WepZ
+                  clients equipment except to employees or agents of WepZ
                   Computers subject to confidentiality agreements or as required
                   by law.
                 </p>
@@ -144,13 +144,13 @@ export default function TermsAndCondition() {
                   WepZ Computers offers the following warranty periods
                 </h2>
                 <p>
-                  30 days warranty for the Same problem – All work is covered by
+                  30 days warranty for the Same problem , All work is covered by
                   a labor-only 30-day warranty. If the same problem re-occurs
                   within 30 days of the original repair (stated on the invoice),
                   WepZ Computers will only charge for any additional parts that
                   may be required. Excludes faults caused by software, virus,
-                  and end-user errors 1-year return-to-base manufacturer’s
-                  warranty on new hardware – All hardware, software, and/or
+                  and end-user errors 1-year return-to-base manufacturers
+                  warranty on new hardware All hardware, software, and/or
                   equipment sold maybe a third-party product or service. Any
                   repair work carried out may be protected by the original
                   manufacturer warranty 3-month return-to-base warranty on
@@ -233,7 +233,7 @@ export default function TermsAndCondition() {
                   the services, including any negligence on its part, shall be
                   limited to the contract price for the services. The client and
                   WepZ Computers agree that the sole and exclusive remedy for
-                  unsatisfactory work shall be, at wepz computer’s option,
+                  unsatisfactory work shall be, at wepz computers option,
                   additional attempts by WepZ Computers must be allowed to
                   complete the work in a satisfactory manner, or refund of the
                   amount paid by the client. The parties acknowledge that the

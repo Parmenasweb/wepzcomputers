@@ -17,7 +17,7 @@ export default function Disclaimer() {
         <link rel="canonical" href="https://www.wepzcomputers.in/disclaimer" />
       </Head>
       <div className="min-h-screen bg-background py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl mx-auto">
+        <div className="w-[90%] mx-auto">
           <h1 className="text-4xl font-bold text-center mb-8">Disclaimer</h1>
           <Card>
             <CardHeader>
@@ -53,8 +53,8 @@ export default function Disclaimer() {
                   to the Privacy Policy, you must not access or use
                   https://wepzcomputers.in TO THE MAXIMUM EXTENT PERMITTED BY
                   LAW, THE PRODUCTS, SERVICES AND INFORMATION ON THIS WEBSITE
-                  AND OR BLOG IS PROVIDED “AS IS” AND WITH ALL FAULTS AND
-                  WEPZCOMPUTERS MAKES NO PROMISES, REPRESENTATIONS, OR
+                  AND OR BLOG IS PROVIDED &quot;AS IS&quot; AND WITH ALL FAULTS
+                  AND WEPZCOMPUTERS MAKES NO PROMISES, REPRESENTATIONS, OR
                   WARRANTIES, EITHER EXPRESS, IMPLIED, STATUTORY, OR OTHERWISE,
                   WITH RESPECT TO THE PRODUCTS, SERVICES AND INFORMATION,
                   INCLUDING ITS CONDITION, ITS CONFORMITY TO ANY REPRESENTATION
@@ -69,7 +69,7 @@ export default function Disclaimer() {
                   WEPZCOMPUTERS OR ITS SUPPLIERS BE LIABLE FOR CONSEQUENTIAL,
                   INCIDENTAL, SPECIAL, INDIRECT, OR EXEMPLARY DAMAGES WHATSOEVER
                   ARISING OUT OF OR IN ANY WAY RELATING TO THIS AGREEMENT OR
-                  USER’S USE OF OR INABILITY TO USE THE PRODUCTS, SERVICES AND
+                  USERS USE OF OR INABILITY TO USE THE PRODUCTS, SERVICES AND
                   INFORMATION, OR THE PROVISION OR FAILURE TO PROVIDE SUPPORT
                   SERVICES, INCLUDING, BUT NOT LIMITED TO, LOST PROFITS, LOSS OF
                   CONFIDENTIAL OR OTHER INFORMATION, BUSINESS INTERRUPTION,
@@ -105,19 +105,19 @@ export default function Disclaimer() {
                   SERVICES IS USUALLY VERY ENCOURAGING. YOU ACKNOWLEDGE THAT
                   YOUR EARNING POTENTIAL IS SUBJECT TO MANY INDEPENDENT FACTORS,
                   ALL OF WHICH VARY FROM INDIVIDUAL TO INDIVIDUAL AND ARE OFTEN
-                  OUT OF ANY INDIVIDUAL’S CONTROL. AS SUCH, WE MAKE NO WARRANTY
+                  OUT OF ANY INDIVIDUALS CONTROL. AS SUCH, WE MAKE NO WARRANTY
                   OR GUARANTEE OF ANY KIND THAT YOU WILL EXPERIENCE ANY SPECIFIC
                   LEVEL OF EARNINGS BY USING OUR PRODUCTS AND SERVICES. ANY
                   EXAMPLES WE HAVE PROVIDED SHOULD NOT BE INTERPRETED AS ANY
                   GUARANTEE OF EARNINGS. WE DO NOT ASSERT THAT OUR PRODUCTS AND
-                  SERVICES REPRESENT A “GET RICH SCHEME.” UPON REQUEST, WE MAY
-                  ASSIST YOU IN THE VERIFICATION OF CLAIMS OF ACTUAL EARNINGS
-                  AND/OR EXAMPLES OF ACTUAL RESULTS ACHIEVED, THOUGH WE ARE
-                  UNDER NO OBLIGATION TO DO SO. HOWEVER, WE CANNOT AND DO NOT
-                  OFFER YOU ANY DIRECT FINANCIAL ADVICE, NOR ARE WE RESPONSIBLE
-                  FOR ANY FINANCIAL DECISIONS YOU MAKE. AS ALWAYS, IT IS YOUR
-                  SOLE RESPONSIBILITY TO DISCUSS THE LEGALITY OR FINANCIAL
-                  SOUNDNESS OF ANY DECISION YOU MAKE WITH A QUALIFIED
+                  SERVICES REPRESENT A &quot;GET RICH SCHEME.&quot; UPON
+                  REQUEST, WE MAY ASSIST YOU IN THE VERIFICATION OF CLAIMS OF
+                  ACTUAL EARNINGS AND/OR EXAMPLES OF ACTUAL RESULTS ACHIEVED,
+                  THOUGH WE ARE UNDER NO OBLIGATION TO DO SO. HOWEVER, WE CANNOT
+                  AND DO NOT OFFER YOU ANY DIRECT FINANCIAL ADVICE, NOR ARE WE
+                  RESPONSIBLE FOR ANY FINANCIAL DECISIONS YOU MAKE. AS ALWAYS,
+                  IT IS YOUR SOLE RESPONSIBILITY TO DISCUSS THE LEGALITY OR
+                  FINANCIAL SOUNDNESS OF ANY DECISION YOU MAKE WITH A QUALIFIED
                   PROFESSIONAL BEFORE MAKING SUCH A DECISION. Affiliate
                   Disclaimer Certain products/services and links to
                   products/services are affiliate links, and I may earn a

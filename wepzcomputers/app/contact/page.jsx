@@ -6,6 +6,7 @@ import { MessageCircle } from "lucide-react";
 import ContactForm from "./components/ContactForm";
 import BusinessHours from "./components/BusinessHours";
 import { useRouter } from "next/navigation";
+import WhatsappButton from "@/components/navComponents/WhatsappClick";
 
 import dynamic from "next/dynamic";
 
@@ -22,7 +23,7 @@ export default function ContactPage() {
   const handleWhatsAppClick = () => {
     const phoneNumber = "6003145149"; // Replace with your actual WhatsApp number
     const message = encodeURIComponent(
-      "Hello, I have a question about laptop repair."
+      "Hello wepzcomputers, I have a question about laptop repair."
     );
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
     window.open(whatsappUrl, "_blank");
@@ -41,14 +42,7 @@ export default function ContactPage() {
               Expert laptop repair solutions at your fingertips. We're here to
               help.
             </p>
-            <button
-              onClick={handleWhatsAppClick}
-              className="bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-8 rounded-full inline-flex items-center transition duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-              aria-label="Contact us via WhatsApp"
-            >
-              <MessageCircle className="mr-2" />
-              WhatsApp Us
-            </button>
+            <WhatsappButton />
           </div>
           <div className="md:w-1/2 relative">
             <div className="relative bg-white dark:bg-gray-800 p-2 rounded-2xl shadow-2xl">
